@@ -1,0 +1,55 @@
+<div class="col-md-10 auth-bg">
+  <app-navbar></app-navbar>
+</div>
+<div class="row auth-wrapper auth-content">
+  <div class="col-md-10 auth-bg">
+    <span class="r"></span>
+    <div class="card">
+
+
+      <div class="card-body ">
+        <div class="text-center">
+          <i class="fa-solid fa-clipboard-list fa-2x text-primary"></i>
+          <h3>Panel de Tareas</h3>
+        </div>
+        <div>
+          <form [formGroup]="tareaForm" (ngSubmit)="guardarTareas()">
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label for="inputTitulo">Título<app-required-char /></label>
+                <input type="text" class="form-control" id="inputTitulo" placeholder="Ingresa el título de la tarea" formControlName="titulo" />
+                <small *ngIf="tareaForm.controls['titulo'].invalid && tareaForm.controls['titulo'].touched" class="text-danger">El título es obligatorio.</small>
+              </div>
+
+              <div class="form-group col-md-12">
+                <label for="inputDescripcion">Descripción<app-required-char /></label>
+                <textarea class="form-control" id="inputDescripcion" placeholder="Ingresa la descripción de la tarea" formControlName="descripcion"></textarea>
+                <small *ngIf="tareaForm.controls['descripcion'].invalid && tareaForm.controls['descripcion'].touched" class="text-danger">La descripción es obligatoria.</small>
+              </div>
+              
+            </div>
+
+            <div class="row text-center">
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-success shadow-2 mb-4" [disabled]="tareaForm.invalid">{{ 'Agregar Tarea' }}</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="row">
+          <h1 class="text-center">Lista de Tareas</h1>
+          <hr>
+          @for(d of estadosDisponibles; track d.idEstados){
+          <div class="col-4">
+            <app-card [estado]="d" [estados]="estadosDisponibles" (tareaMovida)="tareaMovida($event)" (tareaEliminada)="tareaMovida($event)" ></app-card>
+          </div>
+          }
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>

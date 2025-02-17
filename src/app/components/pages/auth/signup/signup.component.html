@@ -1,0 +1,71 @@
+<div class="row auth-wrapper auth-content">
+  <div class="col-md-8 auth-bg">
+    <span class="r"></span>
+    <div class="card">
+      <div class="card-body text-center">
+        <div class="text-center">
+          <i class="feather icon-user-plus auth-icon"></i>
+          <h3>Regístrate</h3>
+        </div>
+        <div>
+          <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="inputNombre">Nombre<app-required-char /></label>
+                <input type="text" class="form-control" id="inputNombre" placeholder="Ingresa tu Nombre"
+                  formControlName="nombre" />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputCorreo">Correo Electrónico<app-required-char /></label>
+                <input type="email" class="form-control" id="inputCorreo" placeholder="Ingresa tu correo electrónico"
+                  formControlName="correoElectronico" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="inputUsuario">Usuario<app-required-char /></label>
+                <input type="text" class="form-control" id="inputUsuario" placeholder="Ingresa tu Usuario"
+                  formControlName="usuario" />
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputContrasenia">Contraseña<app-required-char /></label>
+                <div class="input-group">
+                  <input id="inputContrasenia" [type]="showPassword ? 'text' : 'password'" class="form-control"
+                    placeholder="Contraseña" formControlName="contrasenia" required />
+                  <button type="button" id="btnContrasenia" class="input-group-text text-secondary" (click)="togglePasswordVisibility('pass')">
+                    <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="inputContraseniaRep">Confirmación de Contraseña<app-required-char /></label>
+                <div class="input-group">
+                  <input id="inputContraseniaRep" [type]="showPasswordRep ? 'text' : 'password'" class="form-control"
+                    placeholder="Vuelve a ingresar la contraseña" formControlName="contraseniaRep" required />
+                  <button type="button" id="btnContraseniaRep" class="input-group-text text-secondary"
+                    (click)="togglePasswordVisibility('passRep')">
+                    <i [class]="showPasswordRep ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row text-center">
+              <div>
+                <br />
+                <button type="submit" class="btn btn-primary shadow-2 mb-4" [disabled]="registroForm.invalid">Registrarme</button>
+                <p class="mb-0 text-muted">
+                  ¿Ya tienes una cuenta?
+                  <a [routerLink]="['/auth/login']">Inicia Sesión</a>
+                </p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <span class="r"></span>
+  </div>
+</div>

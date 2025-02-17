@@ -1,0 +1,44 @@
+<div class="auth-wrapper">
+  <div class="auth-content">
+    <div class="auth-bg">
+      <span class="r s"></span>
+      <span class="r s"></span>
+      <span class="r s"></span>
+      <span class="r"></span>
+    </div>
+    <div class="auth-bg">
+      <span class="r"></span>
+      <span class="r s"></span>
+      <span class="r s"></span>
+      <span class="r"></span>
+    </div>
+    <div class="card">
+      <div class="card-body text-center">
+        <div class="mb-4">
+          <i class="feather icon-unlock auth-icon"></i>
+        </div>
+        <h3 class="mb-4">Inicia Sesión</h3>
+        <h3 class="mb-4">Gestión de Tareas</h3>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Usuario" [(ngModel)]="usuario" />
+        </div>
+
+        <div class="input-group mb-4">
+          <div class="input-group">
+            <input [type]="showPassword ? 'text' : 'password'" class="form-control" placeholder="Contraseña" required [(ngModel)]="password" />
+            <button class="input-group-text text-secondary" (click)="togglePasswordVisibility()">  
+              <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+            </button>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" (click)="onLogin()">Accede</button>
+        <p class="mb-0 text-muted">
+          ¿No tienes una cuenta?
+          <a [routerLink]="['/auth/registro']">Regístrate</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

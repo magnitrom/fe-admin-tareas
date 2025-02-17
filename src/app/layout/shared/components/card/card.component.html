@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-header">Tareas<br>{{ estado.nombreEstado }}</h2>
+    <p class="text-end"><i class="fa-regular fa-pen-to-square"></i> Tareas {{ tareas.length }}</p>
+
+    <div *ngIf="tareas.length > 0; else noTareas" class="d-flex flex-wrap justify-content-center">
+      <div *ngFor="let tarea of tareas" class="card mt-2 tarea-card">
+        <div class="card-body">
+          <h4 class="card-title">{{ tarea.titulo }}</h4>
+          <p class="card-text">{{ tarea.descripcion }}</p>
+          <small>Creado por: {{ tarea.usuarioCreacion }} - {{ tarea.fechaCreacion }}</small>
+          <div class="row mt-2">
+            <a class="col-6" (click)="eliminarTarea(tarea.idTareas)">
+              <i class="fa-solid fa-square-minus text-danger fa-lg"
+                 tooltip="{{ msjEliminarTarea }}" [options]="optionTooltips"></i>
+            </a>
+            <div class="col-6 text-end">
+              <a *ngIf="estadoAnterior" (click)="moverTarea(tarea, estadoAnterior)">
+                <i class="fa-solid fa-angles-left text-primary fa-lg"
+                   tooltip="{{ msjRegresarEstado }}" [options]="optionTooltips"></i>
+              </a>
+              <span *ngIf="estadoAnterior && estadoSiguiente"> | </span>
+              <a *ngIf="estadoSiguiente" (click)="moverTarea(tarea, estadoSiguiente)">
+                <i class="fa-solid fa-angles-right text-success fa-lg"
+                   tooltip="{{ msjCambioEstado }}" [options]="optionTooltips"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noTareas>
+      <p class="text-muted text-center mt-3">No hay tareas en este estado.</p>
+    </ng-template>
+  </div>
+</div>

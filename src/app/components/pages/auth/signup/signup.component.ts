@@ -1,6 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { TooltipModule } from 'ng2-tooltip-directive';
+import { TooltipModule } from '@cloudfactorydk/ng2-tooltip-directive';
 import { RequiredCharComponent } from "../../../../layout/shared/components/required-char/required-char.component";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';

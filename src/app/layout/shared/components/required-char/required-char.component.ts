@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TooltipModule } from 'ng2-tooltip-directive';
+import { TooltipModule } from '@cloudfactorydk/ng2-tooltip-directive';
 
 @Component({
   selector: 'app-required-char',

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
-import { TooltipModule } from 'ng2-tooltip-directive';
+import { TooltipModule } from '@cloudfactorydk/ng2-tooltip-directive';
 import { Estado } from '../../../../model/estado.model';
 import { Tarea } from '../../../../model/tarea,model';
 import { TareasService } from '../../../../services/tareas.service';

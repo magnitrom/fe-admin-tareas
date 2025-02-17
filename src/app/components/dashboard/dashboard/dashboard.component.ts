@@ -2,7 +2,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import Swal from 'sweetalert2';
 import { RequiredCharComponent } from "../../../layout/shared/components/required-char/required-char.component";
-import { TooltipModule } from 'ng2-tooltip-directive';
+import { TooltipModule } from '@cloudfactorydk/ng2-tooltip-directive';
 import { CardComponent } from "../../../layout/shared/components/card/card.component";
 import { Store } from '@ngrx/store';
 import { AuthState } from '../../../model/auth.model';

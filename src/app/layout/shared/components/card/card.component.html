@@ -3,12 +3,12 @@
     <h2 class="card-header">Tareas<br>{{ estado.nombreEstado }}</h2>
     <p class="text-end"><i class="fa-regular fa-pen-to-square"></i> Tareas {{ tareas.length }}</p>
 
-    <div *ngIf="tareas.length > 0; else noTareas" class="d-flex flex-wrap justify-content-center">
+    <div *ngIf="tareas.length > 0; else noTareas" class="justify-content-center">
       <div *ngFor="let tarea of tareas" class="card mt-2 tarea-card">
         <div class="card-body">
           <h4 class="card-title">{{ tarea.titulo }}</h4>
           <p class="card-text">{{ tarea.descripcion }}</p>
-          <small>Creado por: {{ tarea.usuarioCreacion }} - {{ tarea.fechaCreacion }}</small>
+          <small>Creado por: {{ tarea.usuarioCreacion }} - {{ convertirFecha(tarea.fechaCreacion!) }}</small>
           <div class="row mt-2">
             <a class="col-6" (click)="eliminarTarea(tarea.idTareas)">
               <i class="fa-solid fa-square-minus text-danger fa-lg"

@@ -173,6 +173,50 @@ export class CardComponent {
       }
     });
   }
+
+  convertirFecha(fecha: string): string {
+    // Dividir la fecha en partes: dd, MM, yyyy y hh, mm
+    const [fechaParte, horaParte] = fecha.split(' ');
+    const [dia, mes, anio] = fechaParte.split('/');
+    const [hora, minutos] = horaParte.split(':');
+  
+    // Crear la cadena en formato ISO: yyyy-MM-ddTHH:mm:ss
+    const fechaISO = `${anio}-${mes}-${dia}T${hora}:${minutos}:00`;
+  
+    // Crear el objeto Date
+    const fechaObj = new Date(fechaISO); // Ahora tenemos la fecha en UTC (sin zona horaria)
+  
+    // Restar 6 horas para ajustar a UTC-06
+    fechaObj.setHours(fechaObj.getHours() - 6);
+  
+    if (isNaN(fechaObj.getTime())) {
+      console.error('Fecha inválida:', fecha);
+      return ''; // Si la fecha es inválida, devolver un valor por defecto
+    }
+  
+    // Establecer opciones de formato, incluyendo la hora en formato militar (24 horas) sin segundos
+    const opciones = {
+      timeZone: 'America/Tegucigalpa', // Zona horaria UTC-06 (Honduras)
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false // Esto asegura que se use el formato de 24 horas (hora militar)
+    };
+  
+    return fechaObj.toLocaleString('es-HN', {
+      timeZone: 'America/Tegucigalpa', // Zona horaria UTC-06 (Honduras)
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false // Esto asegura que se use el formato de 24 horas (hora militar)
+    }); // Devolver la fecha formateada
+  }
+  
+  
   
 
 }
